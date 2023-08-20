@@ -4,11 +4,13 @@ const routes = require('./routes');
 const bodyParser = require('body-parser');
 
 const app = express();
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
-const url = "mongodb://localhost:27017";
+const url = "mongodb://localhost:27017/notes";
 
 mongoose.connect(url, { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true }) .then(() => {
-  app.listen(8080);
+app.listen(8080, () => console.log(`Running on PORT 8080`));
 });
 
 const db = mongoose.connection;

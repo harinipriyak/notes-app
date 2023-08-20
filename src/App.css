@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+.notes {
+  display: flex;
+  align-items: center;
+}
+
+.add-notes {
+  display: flex;
+  align-items: center;
+  margin: 2rem;
+}
+
+button {
+  width: 8rem;
+  height: 2rem;
+  margin: 0 2rem;
+}
+
+input {
+  height: 1rem;
+  margin: 0 2rem;
+}

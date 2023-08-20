@@ -16,7 +16,7 @@ router.get('/notes', async(req, res) => {
 
 router.get('/notes/:notesId', async(req, res) => {
     const { notesId } = req.params;
-   
+
         try {
         const note = await Models.NotesModel.find({ _id: notesId });
          res.send(note);
@@ -30,7 +30,7 @@ router.get('/notes/:notesId', async(req, res) => {
 
 router.post('/notes/:notesId', async(req, res) => {
   const { notesId } = req.params;
- 
+
       try {
       const note = await Models.NotesModel.find({ id: notesId });
        res.send(note);
@@ -57,8 +57,11 @@ router.post('/notes', async (req, res) => {
 
 
 router.delete('/notes/:notesId', async (req, res) => {
+    console.log('1 enters');
+    console.log('req.params', req.params)
     const { notesId } = req.params;
-   
+    console.log(' delete notesId', notesId);
+
     try {
     const note = await Models.NotesModel.deleteOne({ _id: notesId });
      res.send(note);
@@ -71,7 +74,7 @@ router.delete('/notes/:notesId', async (req, res) => {
 
 router.delete('/notes', async (req, res) => {
     const { notesId } = req.params;
-   
+
     try {
     const note = await Models.NotesModel.deleteMany({});
      res.send(note);
