@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 const FunctionalComponent =({data}) => {
     const [counter, setCounter] = useState(0);
@@ -26,6 +26,9 @@ const FunctionalComponent =({data}) => {
     return (
         <div className="functional-component">
             <header className="functional-component__header">
+                {React.createElement(
+                    "h1", { style: { color: "green" } }, "This is when I dont use JSX"
+                )}
                 <h2>This is a Functional Component</h2>
                 Output is {data} {counter}
                 <button onClick={increaseCounter}> Click to increase </button>
