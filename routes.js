@@ -57,10 +57,7 @@ router.post('/notes', async (req, res) => {
 
 
 router.delete('/notes/:notesId', async (req, res) => {
-    console.log('1 enters');
-    console.log('req.params', req.params)
     const { notesId } = req.params;
-    console.log(' delete notesId', notesId);
 
     try {
     const note = await Models.NotesModel.deleteOne({ _id: notesId });
