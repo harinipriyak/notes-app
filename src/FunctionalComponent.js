@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import ChildComponent from "./ChildComponent";
 
 const FunctionalComponent =({data}) => {
     const [counter, setCounter] = useState(0);
@@ -35,6 +36,7 @@ const FunctionalComponent =({data}) => {
                 <button onClick={decreaseCounter}> Click to decrease </button>
                 <h1>{counter}</h1>
                 <h1>{counterContent}</h1>
+                <ChildComponent type='Functional' />
             </header>
         </div>
     );

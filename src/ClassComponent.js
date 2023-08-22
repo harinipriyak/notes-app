@@ -1,4 +1,5 @@
 import React from 'react';
+import ChildComponent from "./ChildComponent";
 
 export default class Counter extends React.Component {
     constructor(props) {
@@ -17,6 +18,7 @@ export default class Counter extends React.Component {
                 <button onClick={() => this.setState({ count: this.state.count + 1 })}>
                     Click me
                 </button>
+                <ChildComponent type='Class' />
             </div>
         );
     }
