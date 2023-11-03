@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const express = require('express');
 const routes = require('./routes');
 const bodyParser = require('body-parser');
@@ -16,18 +15,24 @@ app.use((req, res, next) => {
     next();
 });
 
-const url = "mongodb://localhost:27017/notes";
-
-mongoose.connect(url, { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true }) .then(() => {
-app.listen(8080, () => console.log(`Running on PORT 8080`));
-});
-
-const db = mongoose.connection;
-db.on('error', () => console.log('Connection error!'));
-db.once('open', () => console.log('Successfully connected!'));
+app.listen(80, () => console.log(`Running on PORT 8080`));
 
 app.use(bodyParser.json());
 
-app.use('/api/v1/', routes);
+app.get('/api', (req,res,next) => {
+    res.send({status: 200, message: 'you have reached api'});
+});
+
+app.get('/status', (req,res,next) => {
+    res.send({status: 200, message: 'you have reached status'});
+});
+
+app.get('/api/v1/', (req,res,next) => {
+    res.send({status: 200, message: 'you have reached api v1'});
+});
+
+app.get('/api/v2/', (req,res,next) => {
+    res.send({status: 200, message: 'you have reached api v2'});
+});
 
 module.exports = {app};
