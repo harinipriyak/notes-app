@@ -1,7 +1,7 @@
 import {useState} from "react";
 import './Notes.css';
 
-function Notes() {
+function Notes({text}) {
     const [notes, setNotes] = useState([]);
     const [inputValue, setInputValue] = useState({});
     const [update, setUpdate] = useState('');
@@ -78,6 +78,7 @@ function Notes() {
     return (
         <div className="App">
             <header className="App-header">
+                <h4>Version {text}</h4>
                 <button onClick={getNotes}>Get Notes</button>
                 {notes && notes.map((note) => (
                     <div className='notes'>
