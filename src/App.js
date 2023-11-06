@@ -10,10 +10,10 @@ function App() {
             <Router>
                 <Routes>
                     <Route exact path='/' element={<Notes />} />
-                    <Route path='/api' element={<Notes text={'v0'}/>} />
-                    <Route path='/status' element={<FunctionalComponent text={'v0'}/>} />
-                    <Route path='/api/v1' element={<Notes text={'v1'}/>} />
-                    <Route path='/status/v1' element={<FunctionalComponent text={'v1'}/>} />
+                    <Route path='/logout' element={<Notes text={'v0'}/>} />
+                    <Route path='/maintenance' element={<FunctionalComponent text={'v0'}/>} />
+                    <Route path='/logout/v1' element={<Notes text={'v1'}/>} />
+                    <Route path='/maintenance/v1' element={<FunctionalComponent text={'v1'}/>} />
                 </Routes>
             </Router>
         </div>
