@@ -1,9 +1,8 @@
-const mongoose = require('mongoose');
 const express = require('express');
 const routes = require('./routes');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-
+const path = require('path');
 
 const app = express();
 app.use(express.urlencoded({extended: true}));
@@ -16,18 +15,33 @@ app.use((req, res, next) => {
     next();
 });
 
-const url = "mongodb://localhost:27017/notes";
+// app.listen(80, () => console.log(`Running on PORT 8080`));
 
-mongoose.connect(url, { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true }) .then(() => {
-app.listen(8080, () => console.log(`Running on PORT 8080`));
-});
-
-const db = mongoose.connection;
-db.on('error', () => console.log('Connection error!'));
-db.once('open', () => console.log('Successfully connected!'));
+app.use(express.static('build'));
 
 app.use(bodyParser.json());
 
-app.use('/api/v1/', routes);
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+    }); 
+
+// app.get('/api', (req,res,next) => {
+//     res.send({status: 200, message: 'you have reached api'});
+// });
+
+// app.get('/status', (req,res,next) => {
+//     res.send({status: 200, message: 'you have reached status'});
+// });
+
+// app.get('/api/v1/', (req,res,next) => {
+//     res.send({status: 200, message: 'you have reached api v1'});
+// });
+
+// app.get('/api/v2/', (req,res,next) => {
+//     res.send({status: 200, message: 'you have reached api v2'});
+// });
+const PORT = process.env.PORT || 5000;
+console.log('server started on port:',PORT);
+app.listen(PORT);
 
 module.exports = {app};

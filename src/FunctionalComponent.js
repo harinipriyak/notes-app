@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import ChildComponent from "./ChildComponent";
 
-const FunctionalComponent =({data}) => {
+const FunctionalComponent =({data, text}) => {
     const [counter, setCounter] = useState(0);
     const [counterContent, setCounterContent] = useState('Counter: ');
 
@@ -30,7 +30,7 @@ const FunctionalComponent =({data}) => {
                 {React.createElement(
                     "h1", { style: { color: "green" } }, "This is when I dont use JSX"
                 )}
-                <h2>This is a Functional Component</h2>
+                <h2>This is a Functional Component {text}</h2>
                 Output is {data} {counter}
                 <button onClick={increaseCounter}> Click to increase </button>
                 <button onClick={decreaseCounter}> Click to decrease </button>
